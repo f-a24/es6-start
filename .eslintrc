@@ -3,7 +3,7 @@
   extends: 'airbnb-base',
   parser: 'babel-eslint',
   plugins: ['import'],
-  env: {'browser': true},
+  env: {'browser': true, 'jest': true},
   rules: {
     'comma-dangle': 0,
     'arrow-parens': 0,
