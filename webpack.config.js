@@ -1,6 +1,6 @@
 module.exports = {
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
-  entry: ['babel-polyfill', `${__dirname}/src/js/index.js`],
+  entry: `${__dirname}/src/js/index.js`,
   output: {
     path: `${__dirname}/public`,
     filename: 'index.js'
@@ -13,7 +13,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: [['env', {'modules': false}]]
+              presets: ['@babel/preset-env']
             }
           }
         ],
@@ -22,15 +22,13 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          'style-loader', 
+          'style-loader',
           'css-loader',
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [
-                require('autoprefixer')({grid: true})
-              ]
-            },
+              plugins: [require('autoprefixer')({ grid: true })]
+            }
           },
           'sass-loader'
         ]
