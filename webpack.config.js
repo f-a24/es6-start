@@ -1,3 +1,5 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
   entry: `${__dirname}/src/js/index.js`,
@@ -36,13 +38,21 @@ module.exports = {
       {
         test: /\.(gif|png|jpg|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000'
+      },
+      {
+        test: /\.html$/,
+        loader: "html-loader"
       }
     ]
   },
   resolve: {
     extensions: ['.js']
   },
-  plugins: [],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/html/index.html"
+    })
+  ],
   performance: {
     hints: false
   },
