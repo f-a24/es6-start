@@ -1,7 +1,5 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 module.exports = {
-  mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
+  mode: 'production',
   entry: `${__dirname}/src/js/index.js`,
   output: {
     path: `${__dirname}/public`,
@@ -41,18 +39,14 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: "html-loader"
+        loader: 'html-loader'
       }
     ]
   },
   resolve: {
     extensions: ['.js']
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/html/index.html"
-    })
-  ],
+  plugins: [],
   performance: {
     hints: false
   },
@@ -60,6 +54,6 @@ module.exports = {
     contentBase: `${__dirname}/public`,
     port: 3000,
     hot: true,
-    open: true,
+    open: true
   }
 };
